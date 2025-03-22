@@ -253,4 +253,41 @@ EXPOSE 7860
 RUN mkdir -p /ComfyUI/models/checkpoints && \
     wget "https://huggingface.co/Comfy-Org/stable-diffusion-v1-5-archive/resolve/main/v1-5-pruned-emaonly-fp16.safetensors?download=true" -O /ComfyUI/models/checkpoints/v1-5-pruned-emaonly-fp16.safetensors
 
+
+# Custom nodes installation
+RUN mkdir -p /workspace/ComfyUI/custom_nodes
+
+RUN git clone https://github.com/lldacing/ComfyUI_PuLID_Flux_ll.git /workspace/ComfyUI/custom_nodes/ComfyUI_PuLID_Flux_ll \
+    && pip install -r /workspace/ComfyUI/custom_nodes/ComfyUI_PuLID_Flux_ll/requirements.txt
+
+RUN git clone https://github.com/sipie800/ComfyUI-PuLID-Flux-Enhanced.git /workspace/ComfyUI/custom_nodes/ComfyUI-PuLID-Flux-Enhanced
+
+RUN git clone https://github.com/ltdrdata/ComfyUI-Impact-Pack.git /workspace/ComfyUI/custom_nodes/ComfyUI-Impact-Pack \
+    && pip install -r /workspace/ComfyUI/custom_nodes/ComfyUI-Impact-Pack/requirements.txt
+
+RUN git clone https://github.com/ltdrdata/ComfyUI-Impact-Subpack.git /workspace/ComfyUI/custom_nodes/ComfyUI-Impact-Subpack \
+    && pip install -r /workspace/ComfyUI/custom_nodes/ComfyUI-Impact-Subpack/requirements.txt
+
+RUN git clone https://github.com/lldacing/ComfyUI_Patches_ll.git /workspace/ComfyUI/custom_nodes/ComfyUI_Patches_ll
+
+RUN git clone https://github.com/rgthree/rgthree-comfy.git /workspace/ComfyUI/custom_nodes/rgthree-comfy
+
+RUN git clone https://github.com/Suzie1/ComfyUI_Comfyroll_CustomNodes.git /workspace/ComfyUI/custom_nodes/ComfyUI_Comfyroll_CustomNodes
+
+RUN git clone https://github.com/cubiq/ComfyUI_essentials.git /workspace/ComfyUI/custom_nodes/ComfyUI_essentials \
+    && pip install -r /workspace/ComfyUI/custom_nodes/ComfyUI_essentials/requirements.txt
+
+RUN git clone https://github.com/chengzeyi/Comfy-WaveSpeed.git /workspace/ComfyUI/custom_nodes/Comfy-WaveSpeed
+
+RUN git clone https://github.com/kijai/ComfyUI-KJNodes.git /workspace/ComfyUI/custom_nodes/ComfyUI-KJNodes \
+    && pip install -r /workspace/ComfyUI/custom_nodes/ComfyUI-KJNodes/requirements.txt
+
+RUN git clone https://github.com/pythongosssss/ComfyUI-Custom-Scripts.git /workspace/ComfyUI/custom_nodes/ComfyUI-Custom-Scripts
+
+RUN git clone https://github.com/JPS-GER/ComfyUI_JPS-Nodes.git /workspace/ComfyUI/custom_nodes/ComfyUI_JPS-Nodes
+
+RUN git clone https://github.com/lquesada/ComfyUI-Inpaint-CropAndStitch.git /workspace/ComfyUI/custom_nodes/ComfyUI-Inpaint-CropAndStitch
+
+
+
 CMD [ "/start.sh" ]
